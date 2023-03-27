@@ -141,7 +141,7 @@ export async function reportCheck(
     warnings: Array<interfaces.Warning>,
 ): Promise<void> {
     const client = github.getOctokit(token, {userAgent: USER_AGENT});
-    const reporter = new checks.CheckReporter(client, 'Security audit');
+    const reporter = new checks.CheckReporter(client.rest, 'Security audit');
     const stats = getStats(vulnerabilities, warnings);
     const summary = getSummary(stats);
 
